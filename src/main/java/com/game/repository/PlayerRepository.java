@@ -18,7 +18,6 @@ public class PlayerRepository {
         add(new Player(1L, "Nius", "Bamboozle", Race.HOBBIT, Profession.ROGUE, new Date(1244497480000L), false, 33));
         add(new Player(2L, "Nikrash", "BumbleBeast", Race.ORC, Profession.WARRIOR, new Date(1152424240000L), false, 58));
         add(new Player(4L, "Essel", "Pyrogue", Race.DWARF, Profession.CLERIC, new Date(1243201400000L), true, 3));
-        //add(new Player(4L, "Essel", "Pyrogue", Race.DWARF, Profession.CLERIC, new Date(1243201400000L), true, 3));
         add(new Player(5L, "Bolan", "Lassassin", Race.DWARF, Profession.ROGUE, new Date(1241378440000L), true, 29));
         add(new Player(6L, "Eleonor", "CleverStork", Race.HUMAN, Profession.SORCERER, new Date(1214155000000L), true, 35));
         add(new Player(7L, "Eman", "VainBlizzard", Race.ELF, Profession.SORCERER, new Date(1214772360000L), false, 56));
@@ -58,15 +57,6 @@ public class PlayerRepository {
         add(new Player(52L, "Attiris", "Slotherworldly", Race.ELF, Profession.SORCERER, new Date(1245050800000L), true, 34));
     }};
 
-//    public List<Player> getAll(int pageNumber, int pageSize) {
-//        return storage.stream()
-//                .sorted(Comparator.comparingLong(Player::getId))
-//                .skip((long) pageNumber * pageSize)
-//                .limit(pageSize)
-//                .collect(Collectors.toList());
-//
-//    }
-
     public List<Player> getAll(int pageNumber, int pageSize) {
         return storage.stream()
                 .sorted(Comparator.comparingLong(Player::getId))
@@ -74,7 +64,6 @@ public class PlayerRepository {
                 .limit(pageSize)
                 .collect(Collectors.toList());
     }
-
 
     public int getAllCount() {
         return storage.size();

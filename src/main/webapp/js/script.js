@@ -52,8 +52,8 @@ window.addEventListener("DOMContentLoaded", async function () {
 
         const form = event.target;
         const formData = new FormData(form);
-
         const player = {};
+
         formData.forEach((value, key) => {
             if (key === "birthday") {
                 player[key] = new Date(value).getTime();
@@ -62,7 +62,6 @@ window.addEventListener("DOMContentLoaded", async function () {
         });
 
         await createPlayer(player);
-
         event.target.reset();
     })
 
@@ -134,7 +133,6 @@ function getPlayersAmount() {
     const requestOptions = {
         method: "GET"
     };
-
     const requestUrl = BASE_URL + "/rest/players/count";
 
     return fetch(requestUrl, requestOptions)
@@ -167,7 +165,6 @@ function deletePlayer(playerID) {
     const requestOptions = {
         method: "DELETE"
     };
-
     const requestUrl = BASE_URL + "/rest/players/" + playerID;
 
     console.log("Delete player with id:", playerID);
@@ -226,7 +223,6 @@ function createPlayer(playerInfo) {
         .then(players => {
             updateTable(players);
         })
-
         .catch(error => {
             console.error("Fetch error", error)
         })
@@ -328,7 +324,6 @@ function createDeleteCell(playerId) {
 
 function handleEditPlayer(player, editImg) {
     editImg.src = "img/save.png";
-
     let deleteImg = editImg.closest("tr").querySelector("td:nth-child(10) img");
     deleteImg.style.visibility = "hidden";
 
@@ -386,9 +381,7 @@ function handleEditPlayer(player, editImg) {
 
         editImg.src = "img/edit.png";
         deleteImg.style.visibility = "visible";
-
     })
-
 }
 
 function handleDeletePlayer(playerId) {
