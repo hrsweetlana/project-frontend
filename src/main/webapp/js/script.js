@@ -393,10 +393,6 @@ function handleEditPlayer(player, editImg) {
 
 function handleDeletePlayer(playerId) {
     deletePlayer(playerId);
-    // getPlayers(pageNumber, playersPerPage).then(players => {
-    //     console.log("Players data:", players);
-    //     updateTable(players);
-    // });
 }
 
 function addOption(optionArr, raceSelect) {
