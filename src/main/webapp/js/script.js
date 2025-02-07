@@ -25,7 +25,7 @@ let BANNED = [
 let playersPerPage = 3;
 let pageNumber = 0;
 let buttons = [];
-let buttonIndex;
+let buttonIndex = 0;
 
 window.addEventListener("DOMContentLoaded", async function () {
     initValues();
@@ -39,6 +39,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 
     document.getElementById("players-per-page-select").addEventListener("change", async function (event) {
         playersPerPage = event.target.value;
+        buttonIndex = 0;
         getPlayers(0, playersPerPage).then(players => {
             console.log("Players data after select change:", players);
             updateTable(players);
@@ -66,7 +67,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     })
 
     document.getElementById("next-page-button").addEventListener("click", async function () {
-        buttonIndex = parseInt(localStorage.getItem("activeButton"), 10);
+        //buttonIndex = parseInt(sessionStorage.getItem("activeButton"), 10);
         console.log("buttonIndex", buttonIndex);
         let nextIndex = buttonIndex + 1;
         if (nextIndex < buttons.length) {
@@ -75,7 +76,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     })
 
     document.getElementById("previous-page-button").addEventListener("click", async function () {
-        buttonIndex = parseInt(localStorage.getItem("activeButton"), 10);
+        buttonIndex = parseInt(sessionStorage.getItem("activeButton"), 10);
         console.log("buttonIndex", buttonIndex);
         let previousIndex = buttonIndex - 1;
         if (previousIndex >= 0) {
@@ -118,7 +119,8 @@ function generateButtons(playersAmount) {
             button.style.fontSize = "1.25rem";
             button.style.color = "orange";
 
-            localStorage.setItem("activeButton", i - 1);
+            sessionStorage.setItem("activeButton", i - 1);
+            buttonIndex = parseInt(sessionStorage.getItem("activeButton"), 10);
         });
         buttonsContainer.appendChild(button);
     }
