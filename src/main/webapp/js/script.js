@@ -67,7 +67,6 @@ window.addEventListener("DOMContentLoaded", async function () {
     })
 
     document.getElementById("next-page-button").addEventListener("click", async function () {
-        //buttonIndex = parseInt(sessionStorage.getItem("activeButton"), 10);
         console.log("buttonIndex", buttonIndex);
         let nextIndex = buttonIndex + 1;
         if (nextIndex < buttons.length) {
@@ -76,7 +75,6 @@ window.addEventListener("DOMContentLoaded", async function () {
     })
 
     document.getElementById("previous-page-button").addEventListener("click", async function () {
-        buttonIndex = parseInt(sessionStorage.getItem("activeButton"), 10);
         console.log("buttonIndex", buttonIndex);
         let previousIndex = buttonIndex - 1;
         if (previousIndex >= 0) {
